@@ -1,32 +1,43 @@
+package multi;
+
+
+import java.util.Random;
 
 public class Main {
-
     public static void main(String[] args) {
-        Group gr = new Group();
-
-//        gr.addStudents(new Student("Ярослав","Заец",22,90));
-//        gr.addStudents(new Student("Равшан","Аскеров",26,80));
-//        gr.addStudents(new Student("Виталий","Боженов",25,70));
-//        gr.addStudents(new Student("Арсений","Яценюк",29,60));
+//        for (int i = 1; i<100; i++){
+//            Thread th = new Thread(new FactorialRunnable(),Integer.toString(i));
+//            th.start();
+//        }
 
 
-        gr.addNow();
-        gr.sortBySurname();
+        int[] arr = new int[100_000_00];
+        Random rn = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = rn.nextInt(Integer.MAX_VALUE);
+        }
 
-        gr.searchStudent();
-
-
-
-
-
-
-
-
-
-
-
-
-
+        long start = System.currentTimeMillis();
+        sum(arr);
+        long end = System.currentTimeMillis();
+        System.out.println((end - start) + " ms " + " обычным методом");
+        long mstart = System.currentTimeMillis();
+        MultiThreadSum.sum(arr,8);
+        long mend = System.currentTimeMillis();
+        System.out.println((mend - mstart) + " ms " + " многопоточным методом");
 
     }
+
+
+    static void sum(int[] arr) {
+        int result = 0;
+        for (int i = 0; i < arr.length; i++) {
+            result += arr[i];
+        }
+        System.out.println("Сумма масива = " + result);
+    }
+
+
 }
+
+
