@@ -13,7 +13,7 @@ public class MultiThreadSum {
                 end = threadNumber;
             }
             SingleThreadSum s = new SingleThreadSum(arr, begin, end);
-            s.run();
+            s.start();
             res += s.getSum();
 
         }
