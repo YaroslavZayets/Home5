@@ -5,7 +5,7 @@ public class SingleThreadSum implements Runnable {
     private int[] arr;
     private int begin;
     private int end;
-    private int sum;
+    static int sum;
 
 
     public SingleThreadSum (int[] arr, int begin, int end){
