@@ -9,7 +9,7 @@ public class MultiThreadSum {
         for (int i = 0; i<threadNumber; i++){
             int begin = size*i;
             int end = ((i+1)*size);
-            if ((end-begin)<size){
+            if ((arr.length-begin)<size){
                 end = threadNumber;
             }
             SingleThreadSum s = new SingleThreadSum(arr, begin, end);
